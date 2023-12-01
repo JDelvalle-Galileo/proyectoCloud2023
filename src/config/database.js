@@ -1,14 +1,15 @@
 const mysql = require("mysql");
 const conn = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'Julio2412!',
-    database: 'faw2023'
+    host: 'juliodelvalle.mysql.database.azure.com',
+    user: 'juliodelvalle',
+    password: 'user12345!',
+    database: 'proyectocloud'
 });
 
 conn.connect((err) => {
     if(err){
         console.log("Error en conexión a mysqlServer");
+        console.log(err);
     }else{
         console.log("Conexión satisfactoria");
     }
