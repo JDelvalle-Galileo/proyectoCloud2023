@@ -1,0 +1,57 @@
+<div class="center">
+    <div class="content">
+    <h1><strong>Usuarios Registrados:</strong></h1>
+
+        <table mat-table [dataSource]="comicsData" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <ng-container matColumnDef="editorial">
+          <th mat-header-cell *matHeaderCellDef> Editorial</th>
+          <td mat-cell *matCellDef="let element"> 
+            <ng-container *ngIf="element.editorial == 'Marvel'">
+                <img src="/assets/img/marvel.png" alt="Marvel" width="100">
+            </ng-container>
+            <ng-container *ngIf="element.editorial == 'DC Comics'">
+                <img src="/assets/img/dc.svg" alt="dc comics" width="100" height="100">
+            </ng-container>
+            <ng-container *ngIf="element.editorial == 'Image'">
+                <img src="/assets/img/image.png" alt="Image" width="100">
+            </ng-container>
+        </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="info">
+          <th mat-header-cell *matHeaderCellDef> Información</th>
+          <td mat-cell *matCellDef="let element"> <strong>{{element.nombre}}</strong> <br> {{element.impresion}} <br> {{element.sinopsis}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> Editar</th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-fab color="primary" (click)="editarComic(element.id)" *ngIf="element.emailUsuario == this.backend.emailUsuario">
+            <mat-icon>edit</mat-icon>
+            </button> 
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="borrar">
+          <th mat-header-cell *matHeaderCellDef> Eliminar</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-fab color="warn" (click)="borrarComicDialog(element.id)" *ngIf="element.emailUsuario == this.backend.emailUsuario">
+            <mat-icon>delete</mat-icon>
+            </button> 
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+        <br>
+        <button mat-raised-button color="primary" (click)="ingresarComic()">Ingresar nuevo comic</button>
+        <br>
+        <button mat-raised-button color="primary" (click)="volverAMenu()">Volver al menú</button>
+    </div> 
+</div>

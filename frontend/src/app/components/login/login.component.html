@@ -1,0 +1,21 @@
+<div class="center">
+    <div class="content">
+    <h1><strong>Login</strong></h1>
+        
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email"  [(ngModel)]="email" placeholder="Ex. pat@example.com">
+        </mat-form-field>
+
+        <br>
+    
+        <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password"  [(ngModel)]="password" >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="login()">Iniciar Sesión</button>
+        <br>
+        <button mat-raised-button color="primary" (click)="registrarUsuario()">Registrar nuevo usuario</button>
+    </div> 
+</div>
